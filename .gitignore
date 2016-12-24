@@ -80,8 +80,8 @@ bower_components
 ################################################
 .tmp
 dump.rdb
-
-
+config/connections.js
+config/models.js
 
 
 
