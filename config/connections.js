@@ -43,7 +43,7 @@ module.exports.connections = {
   mysqlServer: {
     adapter: 'sails-mysql',
     host: 'localhost',
-    post: '8889',
+    port: '8889',
     user: 'sails_chattik', //optional
     password: 'pass', //optional
     database: 'sails_chattik' //optional
