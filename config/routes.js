@@ -40,7 +40,8 @@ module.exports.routes = {
   },
   'get /signup': {
     view: 'user/signup'
-  }
+  },
+  '/dashboard': 'InfoController.dash'
 
   /***************************************************************************
   *                                                                          *
