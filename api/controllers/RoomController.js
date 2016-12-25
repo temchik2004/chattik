@@ -27,9 +27,15 @@ module.exports = {
    * `RoomController.createRoom()`
    */
   createRoom: function (req, res) {
-    return res.json({
-      todo: 'newRoom() is not implemented yet!'
-    });
+    Room.create({
+      name: req.param('new_name'),
+      users: req.param('users')
+    },function (err,room) {
+      if(err) return res.negotiate(err);
+
+      res.json(room);
+
+    })
   },
 
 

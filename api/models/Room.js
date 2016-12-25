@@ -10,7 +10,7 @@ module.exports = {
   attributes: {
 
     name : {
-      type: 'string',
+      type: 'string'
       },
 
     chats : {
@@ -22,6 +22,30 @@ module.exports = {
       collection: 'user',
       via: 'rooms'
     }
+  },
+
+
+  /**
+   * Create a new room before find users for adding
+   *
+   * @param  {Object}   inputs
+   *                     • name     {String}
+   *                     • users    {Array}
+   * @param  {Function} callback
+   */
+
+  new: function (inputs , callback) {
+    User.find(inputs.users).exec(function (err,users) {
+      if (err) return false;
+
+      Room.create({
+        name:  inputs.name,
+        users: users
+      }).exec(callback);
+
+      }
+
+    );
   }
 };
 
