@@ -34,9 +34,11 @@ module.exports = {
    * `UserController.signup()`
    */
   signup: function (req, res) {
-    return res.json({
-      todo: 'signup() is not implemented yet!'
-    });
+    User.register({
+      email: req.param('email'),
+      pass: req.param('password')
+    })
+
   }
 };
 

@@ -9,11 +9,24 @@ module.exports = {
 
   attributes: {
 
-    newMessage : { type: 'string' },
+    message : {
+      type: 'string',
+      required: true
+    },
 
-    editMessage : { type: 'string' },
+    users : {
+      collection: 'user',
+      via: 'chats'
+    },
 
-    hideMessage : { type: 'string' }
+    hide : {
+      type: 'boolean',
+      required: true,
+      defaultsTo: false
+    },
+    room: {
+      model: 'room'
+    }
   }
 };
 

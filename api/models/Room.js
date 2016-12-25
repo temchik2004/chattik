@@ -9,11 +9,19 @@ module.exports = {
 
   attributes: {
 
-    newRoom : { type: 'string' },
+    name : {
+      type: 'string',
+      },
 
-    editRoom : { type: 'string' },
+    chats : {
+      collection: 'chat',
+      via: 'room'
+    },
 
-    hideRoom : { type: 'string' }
+    users : {
+      collection: 'user',
+      via: 'rooms'
+    }
   }
 };
 
