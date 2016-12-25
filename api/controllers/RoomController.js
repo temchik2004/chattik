@@ -6,13 +6,27 @@
  */
 
 module.exports = {
-	
+
 
 
   /**
    * `RoomController.newRoom()`
    */
   newRoom: function (req, res) {
+    User.getAll(function(err, users){
+      if (err) return res.negotiate(err);
+
+
+      return res.view('room/new',{
+        users: users
+      });
+    });
+  },
+
+  /**
+   * `RoomController.createRoom()`
+   */
+  createRoom: function (req, res) {
     return res.json({
       todo: 'newRoom() is not implemented yet!'
     });

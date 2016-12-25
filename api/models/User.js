@@ -86,6 +86,18 @@ module.exports = {
       password: md5(inputs.password)
     })
       .exec(cb);
+  },
+
+  /**
+   * Check validness of a login using the provided inputs.
+   * But encrypt the password first.
+   *
+   * @param  {Function} cb
+   */
+
+  getAll: function (cb) {
+    // Find all users
+    User.find().exec(cb);
   }
 };
 

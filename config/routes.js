@@ -43,7 +43,10 @@ module.exports.routes = {
     view: 'user/signup'
   },
   'post /signup': 'UserController.signup',
-  '/dashboard': 'InfoController.dash'
+  '/dashboard': 'InfoController.dash',
+  'get /room/new': 'RoomController.newRoom',
+  'post /room/new': 'RoomController.createRoom',
+  'get /room/edit/:id': 'RoomController.editRoom'
 
   /***************************************************************************
   *                                                                          *
