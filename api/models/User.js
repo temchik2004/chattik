@@ -5,13 +5,16 @@
  * @docs        :: http://sailsjs.org/documentation/concepts/models-and-orm/models
  */
 
+md5 = require('js-md5');
+
 module.exports = {
 
   attributes: {
 
     email: {
       type: 'email',
-      required: true
+      required: true,
+      unique: true
     },
 
     password: {
@@ -20,9 +23,11 @@ module.exports = {
     },
 
     online: {
-      type: 'boolean',
+      type: 'datetime',
       required: true,
-      defaultsTo: true
+      defaultsTo: function () {
+        return new Date();
+      }
     },
 
     hide: {
@@ -58,7 +63,7 @@ module.exports = {
   register: function (inputs , callback) {
     User.create({
       email:    inputs.email,
-      password: inputs.pass
+      password: md5(inputs.pass)
     }).exec(callback);
   },
 
@@ -78,7 +83,7 @@ module.exports = {
     // Create a user
     User.findOne({
       email: inputs.email,
-      password: inputs.password
+      password: md5(inputs.password)
     })
       .exec(cb);
   }

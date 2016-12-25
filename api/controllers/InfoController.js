@@ -6,16 +6,16 @@
  */
 
 module.exports = {
-	
+
 
 
   /**
    * `InfoController.dash()`
    */
   dash: function (req, res) {
-    return res.json({
-      todo: 'dash() is not implemented yet!'
-    });
+    return res.view('dashboard',{
+
+    })
   }
 };
 
