@@ -57,6 +57,27 @@ module.exports = {
   getAll: function (cb) {
     // Find all rooms
     Room.find().exec(cb);
+  },
+
+  /**
+   * Get all rooms with user
+   *
+   * @param  {Integer} user_id
+   *
+   * @param  {Function} cb
+   */
+
+  getAllUserRooms: function (user_id, cb) {
+    // Find all rooms
+    User.findOne({id: user_id }).exec(
+      function (err,user) {
+        if (err) return res.negotiate(err);
+        console.log(user);
+        Room.find({users: user.id}).exec(cb);
+      }
+    );
+
+
   }
 };
 

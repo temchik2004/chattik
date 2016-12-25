@@ -13,11 +13,12 @@ module.exports = {
    * `InfoController.dash()`
    */
   dash: function (req, res) {
-    Room.getAll(function (err,rooms) {
+    console.log(req.session.me);
+    User.findOne(req.session.me).populate('rooms').exec(function (err,user) {
       if (err) return res.negotiate(err);
 
       return res.view('dashboard',{
-          rooms: rooms
+          user: user
         }
       )
 

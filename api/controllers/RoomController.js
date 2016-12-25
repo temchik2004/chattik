@@ -33,7 +33,12 @@ module.exports = {
     },function (err,room) {
       if(err) return res.negotiate(err);
 
-      res.json(room);
+
+      if (req.wantsJSON) {
+        return res.json(room);
+      }
+
+      return res.redirect('/dashboard');
 
     })
   },
