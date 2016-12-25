@@ -6,15 +6,31 @@
  */
 
 module.exports = {
-	
+
 
 
   /**
    * `ChatController.newMessage()`
    */
   newMessage: function (req, res) {
-    return res.json({
-      todo: 'newMessage() is not implemented yet!'
+    User.findOne({id: req.session.me}).exec(function (err,user) {
+      if(err) return res.negotiate(err);
+
+      if(!user) return res.redirect('/');
+
+      Room.findOne({id: req.param('id')}).exec(function (err,room) {
+          if (err) return res.negotiate(err);
+
+          Chat.new({
+            message: req.param('message'),
+            user: user,
+            room: room
+          },function (err,message) {
+            if(err) return res.negotiate(err);
+
+            return res.redirect('/room/'+req.param('id'))
+          });
+      });
     });
   },
 

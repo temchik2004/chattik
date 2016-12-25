@@ -46,6 +46,17 @@ module.exports = {
       }
 
     );
+  },
+
+  /**
+   * Get all rooms
+   *
+   * @param  {Function} cb
+   */
+
+  getAll: function (cb) {
+    // Find all rooms
+    Room.find().exec(cb);
   }
 };
 

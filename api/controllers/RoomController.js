@@ -50,6 +50,26 @@ module.exports = {
 
 
   /**
+   * `RoomController.viewRoom()`
+   */
+  showRoom: function (req, res) {
+    Room.findOne(req.param('id'))
+      .populateAll()
+      .exec(function (err,room) {
+      if (err) return res.negotiate(err);
+
+      Room.getAll(function (err,rooms) {
+
+        return res.view('room/show',{
+          room: room,
+          rooms: rooms
+        });
+      });
+    });
+  },
+
+
+  /**
    * `RoomController.hideRoom()`
    */
   hideRoom: function (req, res) {

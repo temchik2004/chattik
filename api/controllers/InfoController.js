@@ -13,9 +13,15 @@ module.exports = {
    * `InfoController.dash()`
    */
   dash: function (req, res) {
-    return res.view('dashboard',{
+    Room.getAll(function (err,rooms) {
+      if (err) return res.negotiate(err);
 
-    })
+      return res.view('dashboard',{
+          rooms: rooms
+        }
+      )
+
+    });
   }
 };
 

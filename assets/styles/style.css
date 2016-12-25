@@ -1,3 +1,7 @@
 .header, .subheader{
   display: block;
 }
+.headerOfRoom{
+  font-size: 2em;
+  font-weight: 300;
+}

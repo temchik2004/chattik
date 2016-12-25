@@ -14,9 +14,8 @@ module.exports = {
       required: true
     },
 
-    users : {
-      collection: 'user',
-      via: 'chats'
+    user : {
+      model: 'user'
     },
 
     hide : {
@@ -27,6 +26,23 @@ module.exports = {
     room: {
       model: 'room'
     }
+  },
+  /**
+   * Create a new message
+   *
+   * @param  {Object}   inputs
+   *                     • text     {String}
+   *                     • user     {User}
+   *                     • room     {Room}
+   * @param  {Function} callback
+   */
+
+  new: function (inputs , callback) {
+    Chat.create({
+      message:    inputs.message,
+      user:       inputs.user,
+      room:       inputs.room
+    }).exec(callback);
   }
 };
 

@@ -46,7 +46,10 @@ module.exports.routes = {
   '/dashboard': 'InfoController.dash',
   'get /room/new': 'RoomController.newRoom',
   'post /room/new': 'RoomController.createRoom',
-  'get /room/edit/:id': 'RoomController.editRoom'
+  'get /room/edit/:id': 'RoomController.editRoom',
+  'get /room/:id': 'RoomController.showRoom',
+  'post /chat/:id/new': 'ChatController.newMessage'
+
 
   /***************************************************************************
   *                                                                          *

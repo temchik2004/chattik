@@ -1,0 +1,36 @@
+<div class="row">
+  <div class="medium-12 align-center row columns">
+    <div class="row medium-12 align-center align-middle expanded button-group">
+      <a class="button success" href="/room/new">Create room</a>
+      <a class="button alert" href="/room/new">Logout</a>
+    </div>
+    <div class="medium-3 columns" id="list_rooms" style="background-color:blue">
+      <% rooms.forEach(function (room) {%>
+
+      <div class="room" data-room_id="<%= room.id%>">
+        <div class="name_room"><%= room.name %></div>
+        <div class="last_message">login1234: My message </div>
+      </div>
+      <% })%>
+    </div>
+    <div class="medium-9 columns" style="background-color: #b1eef7; height: 100%">
+      <div class="row align-center headerOfRoom"><%= room.name%></div>
+      <% room.chats.forEach(function (message) {%>
+      <div class="message">
+        <div class="username_message"><%= message.user %> : <%= message.createdAt %></div>
+        <div class="message"><%= message.message%> </div>
+      </div>
+      <% })%>
+      <div class="new_message row align-bottom align-center">
+        <form action="/chat/<%= room.id %>/new" method="post" class="medium-8">
+          <div class="input-group">
+            <input class="input-group-field" type="text" name="message">
+            <div class="input-group-button">
+              <input type="submit" class="button" value="Submit">
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

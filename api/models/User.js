@@ -44,7 +44,7 @@ module.exports = {
 
     chats: {
       collection: "chat",
-      via: 'users',
+      via: 'user',
       dominant: true
     }
 
