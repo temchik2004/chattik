@@ -51,7 +51,7 @@ module.exports.connections = {
 
   mysqlServerProd: {
     adapter: 'sails-mysql',
-    url: process.env.CLEARDB_DATABASE_UR
+    url: process.env.CLEARDB_DATABASE_URL
   }
   /***************************************************************************
   *                                                                          *
