@@ -52,7 +52,10 @@ module.exports.routes = {
   'get /room/edit/:id': 'RoomController.editRoom',
   'get /room/:id': 'RoomController.showRoom',
   'post /chat/:id/new': 'ChatController.newMessage',
-  '/logout': 'UserController.logout'
+  '/logout': 'UserController.logout',
+  '/about': {
+    view: 'about'
+  }
 
 
   /***************************************************************************
