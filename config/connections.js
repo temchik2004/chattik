@@ -42,12 +42,8 @@ module.exports.connections = {
   ***************************************************************************/
   mysqlServer: {
     adapter: 'sails-mysql',
-    host: 'localhost',
-    port: '8889',
-    user: 'sails_chattik', //optional
-    password: 'pass', //optional
-    database: 'sails_chattik' //optional
-  },
+    url       : process.env.CLEARDB_DATABASE_URL
+  }
 
   /***************************************************************************
   *                                                                          *
