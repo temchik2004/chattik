@@ -36,11 +36,13 @@ module.exports.routes = {
     view: 'homepage'
   },
   'get /login': {
-    view: 'user/login'
+    view: 'user/login',
+    policy: 'notAuthenticated'
   },
   'post /login': 'UserController.login',
   'get /signup': {
-    view: 'user/signup'
+    view: 'user/signup',
+    policy: 'notAuthenticated'
   },
   'post /signup': 'UserController.signup',
   '/dashboard': 'InfoController.dash',

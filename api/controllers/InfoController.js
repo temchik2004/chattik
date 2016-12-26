@@ -13,7 +13,6 @@ module.exports = {
    * `InfoController.dash()`
    */
   dash: function (req, res) {
-    console.log(req.session.me);
     User.findOne(req.session.me).populate('rooms').exec(function (err,user) {
       if (err) return res.negotiate(err);
 
