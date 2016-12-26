@@ -13,7 +13,7 @@ module.exports = {
    * `ChatController.newMessage()`
    */
   newMessage: function (req, res) {
-    if(req.param('message')) return res.redirect('/room/'+req.param('id'));
+    if(!req.param('message')) return res.redirect('/room/'+req.param('id'));
 
     User.findOne({id: req.session.me}).exec(function (err,user) {
       if(err) return res.negotiate(err);

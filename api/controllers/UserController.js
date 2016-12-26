@@ -26,8 +26,8 @@ module.exports = {
    * `UserController.logout()`
    */
   logout: function (req, res) {
-    return res.json({
-      todo: 'logout() is not implemented yet!'
+    req.session.destroy(function(err) {
+      return res.redirect('/');
     });
   },
 
