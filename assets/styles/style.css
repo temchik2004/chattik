@@ -1,7 +1,56 @@
+body{
+  background-color: rgba(220, 251, 246, 0.24) !important;
+}
 .header, .subheader{
   display: block;
+}
+.header{
+  color: aliceblue;
+}
+.subheader{
+  color: #e1eae9 !important;
 }
 .headerOfRoom{
   font-size: 2em;
   font-weight: 300;
+}
+.racoon{
+  background: url("/images/raccoon-animal-animal-world-wildlife-photography-160709.jpeg") no-repeat center;
+  background-size: cover;
+  background-position: 0% 20%;
+  min-height: 550px;
+  position: relative;
+}
+.to_bottom{
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+}
+.room{
+  border-bottom:solid 2px gray;
+  margin-bottom: 7px;
+}
+.room .name_room{
+  text-align: center;
+  color: black;
+}
+.room .last_message{
+  text-align: justify;
+  color: darkgray;
+}
+#list_rooms{
+  border: solid 2px gray;
+  padding: 10px;
+}
+.message{
+  background-color: deepskyblue;
+  border-radius: 15px;
+  min-height: 20px;
+  padding: 10px 5px 5px 10px;
+  margin-bottom: 8px;
+}
+.wrapperMessages{
+  max-height: 600px;
+  overflow: scroll;
+  margin-bottom: 20px;
 }

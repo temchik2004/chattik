@@ -4,7 +4,7 @@
       <a class="button success" href="/room/new">Create room</a>
       <a class="button alert" href="/room/new">Logout</a>
     </div>
-    <div class="medium-3 columns" id="list_rooms" style="background-color:blue">
+    <div class="medium-3 columns" id="list_rooms">
       <% user.rooms.forEach(function (room) {%>
 
       <div class="room" data-room_id="<%= room.id%>">
@@ -13,6 +13,6 @@
       </div>
       <% })%>
     </div>
-    <div class="medium-9 columns" style="background-color: #b1eef7">sa</div>
+    <div class="medium-9 columns align-center align-middle"><h2>Choose room or create new</h2></div>
   </div>
 </div>

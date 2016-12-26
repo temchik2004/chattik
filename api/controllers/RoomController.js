@@ -63,11 +63,11 @@ module.exports = {
       .exec(function (err,room) {
       if (err) return res.negotiate(err);
 
-      Room.getAll(function (err,rooms) {
+      User.findOne(req.session.me).populate('rooms').exec(function (err,user) {
 
         return res.view('room/show',{
           room: room,
-          rooms: rooms
+          user: user
         });
       });
     });
