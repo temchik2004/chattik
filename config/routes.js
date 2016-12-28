@@ -56,7 +56,9 @@ module.exports.routes = {
   '/about': {
     view: 'about'
   },
-  '/room/:id/subs': 'RoomController.subscribeRoom'
+  '/room/:id/subs': 'RoomController.subscribeRoom',
+  'post /socket/chat/:id/new': 'ChatController.socketNewMessage',
+
 
 
   /***************************************************************************

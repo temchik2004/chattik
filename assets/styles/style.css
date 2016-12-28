@@ -28,7 +28,9 @@ body{
 }
 .room{
   border-bottom:solid 2px gray;
-  margin-bottom: 7px;
+  margin-bottom: 15px;
+  margin-top: 15px;
+  padding-bottom: 10px;
 }
 .room .name_room{
   text-align: center;

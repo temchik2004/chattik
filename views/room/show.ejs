@@ -9,7 +9,6 @@
 
       <div class="room" data-room_id="<%= room.id%>">
         <div class="name_room"><%= room.name %></div>
-        <div class="last_message">login1234: My message </div>
       </div>
       <% })%>
     </div>
@@ -26,7 +25,7 @@
 
       </div>
       <div class="new_message row align-bottom align-center">
-        <form action="/chat/<%= room.id %>/new" method="post" class="medium-8">
+        <form action="/chat/<%= room.id %>/new" method="post" class="medium-8" id="formNewMessage">
           <div class="input-group">
             <input class="input-group-field" type="text" name="message" required>
             <div class="input-group-button">
@@ -38,3 +37,6 @@
     </div>
   </div>
 </div>
+<script>
+ const ROOMID =  <%= room.id %>;
+</script>

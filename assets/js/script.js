@@ -11,19 +11,27 @@ $(document).ready(function () {
 
   if (wrapperMessage){
     wrapperMessage.scrollTop = wrapperMessage.scrollHeight;
-
   }
-
+  function addMessage(userEmail, message) {
+    $('#wrapperMessages').append("<div class=\"message\"><div class=\"username_message\"> " + userEmail + " : " + message.createdAt + "</div> <div class=\"message\">" + message.message + " </div> </div>");
+  }
   io.sails.url = 'http://localhost:1337';
   io.socket.on('connectedToRoom', function (data) {
     console.log(data);
   });
-  io.socket.on('mess', function (data) {
-    console.log(data);
+  io.socket.on('newMessage', function (data) {
+    addMessage(data.user, data.message);
+    wrapperMessage.scrollTop = wrapperMessage.scrollHeight;
   });
-  if(location.pathname.search('/room')===0){
-    io.socket.get('/room/'+location.pathname.slice(-1)+'/subs', function (resData) {
-      console.log(resData); // => {id:9, name: 'Timmy Mendez'}
+  if(typeof ROOMID != "undefined"){
+    io.socket.get('/room/'+ROOMID+'/subs');
+
+    $('#formNewMessage').submit(function () {
+      var textMessage = $('input[name="message"]').val();
+      io.socket.post('/socket/chat/' + ROOMID + '/new',{message: textMessage});
+      $('input[name="message"]').val('');
+      return false;
     });
+
   }
 });

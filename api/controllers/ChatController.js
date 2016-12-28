@@ -29,9 +29,42 @@ module.exports = {
             room: room
           },function (err,message) {
             if(err) return res.negotiate(err);
-            sails.sockets.broadcast(room.id, 'mess', { room: room.id, greeting: 'Hola!' });
+
+            sails.sockets.broadcast(room.id, 'newMessage', { user: user.email, message: message });
 
             return res.redirect('/room/'+req.param('id'))
+          });
+      });
+    });
+  },
+
+  /**
+   * `ChatController.socketNewMessage()`
+   */
+  socketNewMessage: function (req, res) {
+    if (!req.isSocket) {
+      return res.badRequest();
+    }
+
+    if(!req.param('message')) return res.redirect('/room/'+req.param('id'));
+
+    User.findOne({id: req.session.me}).exec(function (err,user) {
+      if(err) return res.negotiate(err);
+
+      if(!user) return res.redirect('/');
+
+      Room.findOne({id: req.param('id')}).exec(function (err,room) {
+          if (err) return res.negotiate(err);
+
+          Chat.new({
+            message: req.param('message'),
+            user: user,
+            room: room
+          },function (err,message) {
+            if(err) return res.negotiate(err);
+
+            sails.sockets.broadcast(room.id, 'newMessage', { user: user.email, message: message });
+
           });
       });
     });
