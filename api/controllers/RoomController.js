@@ -73,6 +73,28 @@ module.exports = {
     });
   },
 
+  subscribeRoom: function(req, res) {
+    if (!req.isSocket) {
+      return res.badRequest();
+    }
+
+    Room.findOne(req.param('id'))
+      .exec(function (err,room) {
+        if (err) return res.negotiate(err);
+
+        sails.sockets.join(req, room.id, function(err) {
+          if (err) {
+            return res.serverError(err);
+          }
+
+          return res.json({
+            message: 'Subscribed to a fun room called "'+room.id+'"!'
+          });
+        });
+
+      });
+    // return res.badRequest();
+  },
 
   /**
    * `RoomController.hideRoom()`

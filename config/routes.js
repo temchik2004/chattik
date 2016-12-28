@@ -55,7 +55,8 @@ module.exports.routes = {
   '/logout': 'UserController.logout',
   '/about': {
     view: 'about'
-  }
+  },
+  '/room/:id/subs': 'RoomController.subscribeRoom'
 
 
   /***************************************************************************

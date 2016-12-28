@@ -13,4 +13,17 @@ $(document).ready(function () {
     wrapperMessage.scrollTop = wrapperMessage.scrollHeight;
 
   }
+
+  io.sails.url = 'http://localhost:1337';
+  io.socket.on('connectedToRoom', function (data) {
+    console.log(data);
+  });
+  io.socket.on('mess', function (data) {
+    console.log(data);
+  });
+  if(location.pathname.search('/room')===0){
+    io.socket.get('/room/'+location.pathname.slice(-1)+'/subs', function (resData) {
+      console.log(resData); // => {id:9, name: 'Timmy Mendez'}
+    });
+  }
 });

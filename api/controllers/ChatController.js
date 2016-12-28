@@ -29,6 +29,7 @@ module.exports = {
             room: room
           },function (err,message) {
             if(err) return res.negotiate(err);
+            sails.sockets.broadcast(room.id, 'mess', { room: room.id, greeting: 'Hola!' });
 
             return res.redirect('/room/'+req.param('id'))
           });
